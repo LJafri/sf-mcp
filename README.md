@@ -4,6 +4,15 @@ MCP Server for Interacting with Salesforce Orgs
 
 [![NPM](https://img.shields.io/npm/v/@salesforce/mcp.svg?label=@salesforce/mcp)](https://www.npmjs.com/package/@salesforce/mcp) [![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://opensource.org/license/apache-2-0)
 
+## Available Implementations
+
+This repository provides **two implementations** of the Salesforce DX MCP Server:
+
+- **TypeScript/Node.js** (main directory) - Production-ready implementation using NPM
+- **Python** (`python/` directory) - Modern Python implementation following 2025 MCP advancements
+
+Both implementations provide the same core functionality and tool sets. Choose the one that best fits your environment and preferences.
+
 ## Overview of the Salesforce DX MCP Server (Developer Preview)
 
 The Salesforce DX MCP Server is a specialized Model Context Protocol (MCP) implementation designed to facilitate seamless interaction between large language models (LLMs) and Salesforce orgs. This MCP server provides a robust set of tools and capabilities that enable LLMs to read, manage, and operate Salesforce resources securely.
@@ -43,7 +52,26 @@ The Salesforce DX MCP Server was designed with security as a top priority.
   - MCP Server can access auth info for only orgs that have been explicitly allowlisted.
   - Users specify allowed orgs when starting the server.
 
-## Get Started Using VS Code as the Client
+## Get Started
+
+Choose your preferred implementation:
+
+### TypeScript/Node.js (Recommended for Production)
+
+See the sections below for installation and configuration using NPM.
+
+### Python Implementation
+
+For the Python implementation, see the [Python README](python/README.md) for detailed installation and usage instructions.
+
+Quick start:
+```bash
+cd python
+pip install -e .
+sf-mcp-server --orgs DEFAULT_TARGET_ORG --toolsets all
+```
+
+## Get Started Using VS Code as the Client (TypeScript)
 
 Want to jump in and see what all the fuss is about? Read on!
 
