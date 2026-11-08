@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "salesforce-mcp"
+version = "0.15.0"
+description = "Model Context Protocol (MCP) server for Salesforce integration"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Salesforce", email = "noreply@salesforce.com" }
+]
+keywords = ["mcp", "salesforce", "ai", "llm", "model-context-protocol"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "mcp>=1.3.0",
+    "simple-salesforce>=1.12.6",
+    "pydantic>=2.0.0",
+    "httpx>=0.27.0",
+    "click>=8.1.7",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "black>=24.0.0",
+    "ruff>=0.3.0",
+    "mypy>=1.8.0",
+]
+
+[project.scripts]
+sf-mcp-server = "salesforce_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/salesforcecli/mcp"
+Repository = "https://github.com/salesforcecli/mcp"
+Issues = "https://github.com/salesforcecli/mcp/issues"
+Documentation = "https://github.com/salesforcecli/mcp/blob/main/README.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["salesforce_mcp"]
+
+[tool.black]
+line-length = 120
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
